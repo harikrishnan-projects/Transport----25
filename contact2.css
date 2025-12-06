@@ -519,6 +519,15 @@ button[type="submit"]:hover {
   }
 } */
 
+
+
+/* add this to your CSS (or keep if already present) */
+.input-error {
+  border-color: red !important;
+  box-shadow: 0 0 6px rgba(255,0,0,0.2);
+}
+
+
 @media (max-width: 450px) {
   #contact {
     padding: 40px 15px;

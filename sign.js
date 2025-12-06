@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const signinForm = document.getElementById("signin-form");
-  const forgotForm = document.getElementById("forgot-form");
-  const signupForm = document.getElementById("signup-form");
+  const signinForm  = document.getElementById("signin-form");
+  const forgotForm  = document.getElementById("forgot-form");
+  const signupForm  = document.getElementById("signup-form");
 
   const sectionSignin = document.getElementById("signin-section");
   const sectionForgot = document.getElementById("forgot-section");
@@ -12,59 +12,76 @@ document.addEventListener("DOMContentLoaded", () => {
     sectionForgot.style.display = "none";
     sectionSignup.style.display = "none";
     section.style.display = "block";
+    clearAllErrors();
   }
 
-  // Start by showing sign in
+  // validators
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValidPassword = (p) => typeof p === "string" && p.length >= 6;
+  const isNonEmpty = (v) => typeof v === "string" && v.trim().length > 0;
+
+  // error helpers
+  function showError(errId, msg) {
+    const el = document.getElementById(errId);
+    if (el) el.textContent = msg;
+  }
+  function clearAllErrors() {
+    document.querySelectorAll(".error").forEach(e => e.textContent = "");
+  }
+
+  // show sign in initially
   showSection(sectionSignin);
 
-  /*** Sign In logic with clearing ***/
+  // ---------- Signin ----------
   signinForm.addEventListener("submit", (ev) => {
     ev.preventDefault();
+    clearAllErrors();
 
     const emailEl = document.getElementById("signin-email");
-    const passwordEl = document.getElementById("signin-password");
+    const pwdEl   = document.getElementById("signin-password");
 
     const email = emailEl.value.trim();
-    const password = passwordEl.value.trim();
+    const pwd = pwdEl.value.trim();
 
-    if (!email || !password) {
-      alert("Please enter both email and password.");
-      return;
+    let hasError = false;
+
+    if (!isNonEmpty(email) || !isValidEmail(email)) {
+      showError("signin-email-error", "Please enter a valid email address.");
+      hasError = true;
+    }
+    if (!isNonEmpty(pwd) || !isValidPassword(pwd)) {
+      showError("signin-password-error", "Please enter a valid password (min 6 chars).");
+      hasError = true;
     }
 
-    // Clear the inputs
-    emailEl.value = "";
-    passwordEl.value = "";
-    document.getElementById("remember-me").checked = false;
+    if (hasError) return; // STOP — do not navigate
 
-    // Decide redirection (demo logic)
-    if (email === "test@example.com" && password === "password") {
-      window.location.href = "./dashboard.html";
-    } else {
-      window.location.href = "./error.html";
-    }
+    // VALID -> per your requirement, go to error page (404)
+    window.location.href = "./error.html";
   });
 
-  /*** Forgot Password logic with clearing ***/
+  // ---------- Forgot ----------
   forgotForm.addEventListener("submit", (ev) => {
     ev.preventDefault();
+    clearAllErrors();
+
     const forgotEmailEl = document.getElementById("forgot-email");
     const email = forgotEmailEl.value.trim();
-    if (!email) {
-      alert("Please enter your email.");
-      return;
+
+    if (!isNonEmpty(email) || !isValidEmail(email)) {
+      showError("forgot-email-error", "Please enter a valid email address.");
+      return; // STOP
     }
 
-    // Clear the input
-    forgotEmailEl.value = "";
-
-    alert("We’ve sent a reset link to " + email + ".");
-    showSection(sectionSignin);
+    // VALID -> navigate to 404 (per your requirement)
+    window.location.href = "./error.html";
   });
 
-  /*** Sign Up logic with clearing ***/
+  // ---------- Signup ----------
   signupForm.addEventListener("submit", (ev) => {
     ev.preventDefault();
+    clearAllErrors();
+
     const nameEl = document.getElementById("signup-name");
     const emailEl = document.getElementById("signup-email");
     const pwdEl = document.getElementById("signup-password");
@@ -75,40 +92,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const pwd = pwdEl.value.trim();
     const confirm = confirmEl.value.trim();
 
-    if (!name || !email || !pwd || !confirm) {
-      alert("Please fill all fields.");
-      return;
+    let hasError = false;
+
+    if (!isNonEmpty(name)) {
+      showError("signup-name-error", "Please enter your full name.");
+      hasError = true;
     }
-    if (pwd !== confirm) {
-      alert("Passwords do not match.");
-      return;
+    if (!isNonEmpty(email) || !isValidEmail(email)) {
+      showError("signup-email-error", "Please enter a valid email address.");
+      hasError = true;
+    }
+    if (!isNonEmpty(pwd) || !isValidPassword(pwd)) {
+      showError("signup-password-error", "Password must be at least 6 characters.");
+      hasError = true;
+    }
+    if (!isNonEmpty(confirm) || pwd !== confirm) {
+      showError("signup-confirm-error", "Passwords must match.");
+      hasError = true;
     }
 
-    // Clear inputs
-    nameEl.value = "";
-    emailEl.value = "";
-    pwdEl.value = "";
-    confirmEl.value = "";
+    if (hasError) return; // STOP
 
-    alert(`Account created for ${name} (${email})`);
-    showSection(sectionSignin);
+    // VALID -> navigate to 404 (per requirement)
+    window.location.href = "./error.html";
   });
 
-  // Anchor links to switch sections
+  // Link handlers that show sections
   document.getElementById("link-forgot").addEventListener("click", (ev) => {
-    ev.preventDefault();
-    showSection(sectionForgot);
+    ev.preventDefault(); showSection(sectionForgot);
   });
   document.getElementById("link-signup").addEventListener("click", (ev) => {
-    ev.preventDefault();
-    showSection(sectionSignup);
+    ev.preventDefault(); showSection(sectionSignup);
   });
   document.getElementById("back-to-signin-from-forgot").addEventListener("click", (ev) => {
-    ev.preventDefault();
-    showSection(sectionSignin);
+    ev.preventDefault(); showSection(sectionSignin);
   });
   document.getElementById("back-to-signin-from-signup").addEventListener("click", (ev) => {
-    ev.preventDefault();
-    showSection(sectionSignin);
+    ev.preventDefault(); showSection(sectionSignin);
   });
 });

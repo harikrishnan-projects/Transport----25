@@ -58,3 +58,40 @@ document.querySelectorAll('.acc-btn').forEach(btn => {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+/* submit button js code */
+
+const contactForm = document.getElementById("contactForm");
+const formResponse = document.getElementById("formResponse");
+
+contactForm.addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  // Get form values
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  // Simple validation
+  if (!name || !email || !message) {
+    formResponse.textContent = "Please fill the valid details.";
+    formResponse.style.color = "red"; // You can style as per your CSS
+    return;
+  }
+
+  // Clear the form
+  contactForm.reset();
+
+  // Redirect to your error page
+  window.location.href = "./error.html";
+});
