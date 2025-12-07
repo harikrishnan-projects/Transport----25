@@ -189,7 +189,7 @@ html, body {
   .hamburger {
     display: block;
     align-self: flex-end;
-    margin-left: 80px;
+    margin-left: 40px;
     margin-bottom: 10px;
   }
 
@@ -437,8 +437,8 @@ html, body {
   /* Adjust step padding and icon size */
   .step {
     padding: 25px 15px;
-    width: 350px;
-    margin-left: 35px;
+    width: 320px;
+    margin-left: 5px;
   }
 
   .step-icon {
@@ -1169,9 +1169,9 @@ html, body {
 
   /* Center the image */
   .passenger-details .img {
-    margin-left: -20px;
+    margin-left: -10px;
     margin-top: 1rem;
-    width: 30%;
+    width: 20%;
     /* height: auto; */
   }
 

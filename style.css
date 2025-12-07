@@ -188,7 +188,7 @@ html, body {
   .hamburger {
     display: block;
     align-self: flex-end;
-    margin-left: 80px;
+    margin-left: 60px;
     margin-bottom: 10px;
   }
 
@@ -931,7 +931,7 @@ html, body {
   .offer-card {
     transform-origin: top center;
     width: 300px;
-    margin-left: 60px;
+    margin-left: 10px;
   }
 
   .badge {
@@ -1128,10 +1128,11 @@ html, body {
   }
 
   .navigate img{
-    width: 400px;
+    width: 380px;
     height: 300px;
     margin-top: -50px;
     margin-bottom: 40px;
+    margin-left: -50px;
   }
 
   .modern-tracking {

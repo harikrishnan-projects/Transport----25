@@ -115,3 +115,36 @@ document.getElementById('nextToPayment').addEventListener('click', function() {
     alert('Please fill in all the required fields.');
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+/* Search Buses button */
+document.querySelector('button[type="submit"]').addEventListener('click', function(event) {
+  event.preventDefault();
+  const searchForm = document.getElementById('searchForm'); // Make sure your form has id="searchForm"
+  if (searchForm.checkValidity()) {
+    // Redirect to 404 page if form is valid
+    window.location.href = '404.html'; // replace with your actual 404 page path
+  } else {
+    alert('Please fill in all the required fields.');
+  }
+});
+
+/* Next: Payment button */
+document.getElementById('nextToPayment').addEventListener('click', function() {
+  const passengerForm = document.getElementById('passengerForm');
+  if (passengerForm.checkValidity()) {
+    // Redirect to 404 page if form is valid
+    window.location.href = '404.html'; // replace with your actual 404 page path
+  } else {
+    alert('Please fill in all the required fields.');
+  }
+});

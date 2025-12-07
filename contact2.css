@@ -188,7 +188,7 @@ html, body {
   .hamburger {
     display: block;
     align-self: flex-end;
-    margin-left: 80px;
+    margin-left: 40px;
     margin-bottom: 10px;
   }
 
@@ -340,6 +340,7 @@ html, body {
     font-size: 1rem;
   }
 }
+
 
 
 
@@ -520,7 +521,6 @@ button[type="submit"]:hover {
 } */
 
 
-
 /* add this to your CSS (or keep if already present) */
 .input-error {
   border-color: red !important;
@@ -552,12 +552,12 @@ button[type="submit"]:hover {
 
   .contact-info,
   .contact-form {
-    width: 90%;       /* full width */
+    width: 100%;       /* full width */
     margin: 20px 0;    /* reduce spacing */
     display: block;    /* stack vertically */
     /* border-radius: 50px;  */
-    padding: 30px;     /* smaller padding */
-    margin-left:20px;
+    padding: 40px;     /* smaller padding */
+    margin-left:1px;
   }
 
   .contact-info h2 {
@@ -577,7 +577,7 @@ button[type="submit"]:hover {
     font-size: 1.5em;
     margin-bottom: 25px;
     width: 310px;
-    margin-left: 20px;
+    margin-left:2px;
   }
 
   .form-group input,

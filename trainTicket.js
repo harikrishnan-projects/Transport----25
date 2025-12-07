@@ -76,3 +76,44 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     item.classList.toggle('active');
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  // Search Form
+  const searchForm = document.getElementById('searchForm');
+  searchForm.addEventListener('submit', function(e) {
+    if (!searchForm.checkValidity()) {
+      // Prevent default submit only if form is invalid
+      e.preventDefault();
+      searchForm.reportValidity();
+    } else {
+      // Form is valid → redirect to error page
+      window.location.href = './error.html';
+    }
+  });
+
+  // Passenger Form
+  const passengerForm = document.getElementById('passengerForm');
+  passengerForm.addEventListener('submit', function(e) {
+    if (!passengerForm.checkValidity()) {
+      e.preventDefault();
+      passengerForm.reportValidity();
+    } else {
+      window.location.href = './error.html';
+    }
+  });
+
+});
+
+
