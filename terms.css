@@ -36,22 +36,12 @@ html, body {
   gap: 20px;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo img {
-  height: 70px;
-}
-
-.logo h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: rgb(217, 144, 9);
-}
+/* Brand & right */
+.right { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; min-width: 0; }
+.brand { display:flex; align-items:center; gap:1px; text-decoration:none; color:inherit; flex: 0 0 auto; }
+.brand img { width:80px; height:80px; border-radius:6px; object-fit:contain; }
+.brand-title { display:flex; flex-direction:column; line-height:1; }
+.brand-title .title { font-weight:700; font-size:30px; color: black;}
 
 /* ========== Navigation / Links ========== */
 .hamburger {
